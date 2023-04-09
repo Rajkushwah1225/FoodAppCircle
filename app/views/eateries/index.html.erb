@@ -1,0 +1,22 @@
+<h1>All Eateries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @eateries.each do |eatery| %>
+      <tr>
+        <td><%= eatery.name %></td>
+        <td><%= eatery.description %></td>
+        <td><%= eatery.location %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
