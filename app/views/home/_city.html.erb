@@ -1,21 +1,18 @@
-<table class="table ">
+<table class="table">
   <thead>
     <tr>
       <th scope="col">City Id</th>
       <th scope="col">City Name</th>
       <th scope="col">Action</th>
-    
     </tr>
   </thead>
   <tbody>
     <tr>
-
     <% @cities.each do |city| %>
       <td><%= city.id %></td>
       <td><%= city.name %></td>
-     <td><%= link_to "open restaurant",home_restro_path(city), class: "btn btn-primary" %>
-     
+      <td><%= link_to "open restaurant",home_restro_path(city), class: "btn btn-primary" %>
     </tr>
-    <%end%>
+    <% end %>
   </tbody>
 </table>

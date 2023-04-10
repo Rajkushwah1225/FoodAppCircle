@@ -3,13 +3,13 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Restaurant Name</th>
       <th>Description</th>
-      <th>Location</th>
+      <th>Address</th>
     </tr>
   </thead>
   <tbody>
-    <% @eateries.each do |eatery| %>
+    <%= @restaurants.each do |eatery| %>
       <tr>
         <td><%= eatery.name %></td>
         <td><%= eatery.description %></td>

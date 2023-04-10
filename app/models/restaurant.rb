@@ -1,4 +1,5 @@
 class Restaurant < ApplicationRecord
-    belongs_to :city
-    validates :city_id, :name, presence: true
+    has_many :cuisines, dependent: :destroy
+    validates :name, :address, presence: true
+    validates :name, uniqueness: true
 end

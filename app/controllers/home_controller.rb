@@ -1,13 +1,13 @@
 class HomeController < ApplicationController
   
-  def index
-  @cities = City.all
-  end
+  # def index
+  # @cities = City.all
+  # end
  
-  def restro
-    @restaurants = Restaurant.all
-  end
+#   def restro
+#     @restaurants = Restaurant.all
+#    end
+# end
 end
-
 
 
