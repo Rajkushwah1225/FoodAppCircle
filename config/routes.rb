@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   #get "home/restro"
   # get "restaurant/index"
   # get "restaurant/cuisine/index"
-  resources :users
-  resources :restaurant
-  resources :cuisine
+  # resources :users
+  # resources :cuisine
+  
+  resources :restaurants do
+    resources :cuisines
+  end
 end

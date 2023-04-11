@@ -1,11 +1,12 @@
 <h1>All Restaurant</h1>
+<%= link_to "Add new Restaurant", new_restaurant_path,class: "btn btn-primary btn-sm" %>
 <table class="table table-striped">
   <thead>
     <tr>
       <th>Restaurant Name</th>
       <th>Description</th>
       <th>Address</th>
-      <th>Enter Restaurant</th>
+      <th>Actions</th>
       <%# <th> create new restaurant </th> %>
      <%# <th><td><%= link_to "enter new restaurant",,class: "btn btn-primary" %></td></th>
     </tr>
@@ -16,8 +17,10 @@
         <td><%= rest.name %></td>
         <td><%= rest.description %></td>
         <td><%= rest.address %></td>
-        <td><%= link_to "enter restaurant",class: "btn btn-primary" %>
-        </tr>
+       <%=td class="d-flex justify-content:right"><%= link_to "view cuisines",cuisines_new_path,class: "btn btn-primary" %> 
+       <%= link_to "update restaurant",edit_restaurants_path(rest),class: "btn btn-primary" %>
+       <%= button_to "delete restaurant", restaurants_path(rest),method: :delete,class: "btn btn-primary" %></td>
+      </tr>
       <% end %>
     </tbody>
   </table>

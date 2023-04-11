@@ -1,0 +1,14 @@
+ <%# <%= render 'home/cuisine' %>
+<h3> All Cuisines </h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+     <th>Name of Cuisine</th>
+    </tr>
+  <tr>
+  <% @cuisines.each do |cuis| %>
+    <td><%= cuis.name %></td>
+  </tr>
+<% end %>
+</table>
+</body>

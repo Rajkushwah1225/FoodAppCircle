@@ -1,0 +1,22 @@
+<h1>Edit <%= @restaurant.name %></h1>
+
+<%= form_with model:@restaurant, method: :patch do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+  
+  <div>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </div>
+  
+  <div>
+    <%= form.label :address %><br>
+    <%= form.text_field :address %>
+  </div>
+  
+  <div>
+    <%= form.submit "Update Restaurant" %>
+  </div>
+<% end %>
