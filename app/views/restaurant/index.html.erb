@@ -6,6 +6,8 @@
       <th>Description</th>
       <th>Address</th>
       <th>Enter Restaurant</th>
+      <%# <th> create new restaurant </th> %>
+     <%# <th><td><%= link_to "enter new restaurant",,class: "btn btn-primary" %></td></th>
     </tr>
   </thead>
   <tbody>
@@ -14,8 +16,9 @@
         <td><%= rest.name %></td>
         <td><%= rest.description %></td>
         <td><%= rest.address %></td>
-        <td><%= link_to "enter restaurant", restaurant_cuisine_index_path(rest.id),class: "btn btn-primary" %>
+        <td><%= link_to "enter restaurant",class: "btn btn-primary" %>
         </tr>
       <% end %>
     </tbody>
   </table>
+<%# restaurant_cuisine_index_path(rest.id) %>

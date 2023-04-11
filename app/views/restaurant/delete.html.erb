@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Address</th>
+  </tr>
+</thead>
+<tbody class="body">
+  <tr>
+    <%= @restaurants.each do |rest|%>
+      <td><%= rest.name%></td>
+      <td><%= rest.desription%></td>
+      <td><%= rest.address%></td>
+      <td><%= link_to "Delete",  %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
