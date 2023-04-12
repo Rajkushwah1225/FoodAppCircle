@@ -1,4 +1,4 @@
- <%# <%= render 'home/cuisine' %>
+
  <table class="table table-striped">
   <thead>
     <tr>
@@ -6,22 +6,19 @@
       <th>Restaurant ID</th>
       <th>Actions</th>
     </tr>
-  </thead>
-
-<tbody>
-  <% @cuisine.each do |cuisine| %>
+    <% @cuisine.each do |cuis| %>
     <tr>
-     <td><%= cuisine.name %></td>
-     <td><%= cuisine.restaurant_id %></td>
+     <td><%= cuis.name %></td>
+     <td><%= cuis.restaurant_id %></td>
      <td>
-    <%= link_to "add items",'#', class: "btn btn-primary" %> </td>
-     
-           
-    </tr>
+      <%= link_to "create cuisine", new_restaurant_cuisine_path , class: "btn btn-primary" %>
+      <%= link_to "", "" , class: "btn btn-primary" %></td> 
+      <%#= link_to "Edit", edit_restaurant_cuisine_path , class: "btn btn-primary" %>
+      <%#= link_to "Delete", restaurant_cuisine_path , method: :delete , class: "btn btn-primary" %>   
+      </tr> 
     <% end %>
   </tbody>
 </table>
-
 
 <%#= will_paginate %>
 

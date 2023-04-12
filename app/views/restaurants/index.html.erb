@@ -1,5 +1,6 @@
+<% if user_signed_in? %>
 <h1>All Restaurant</h1>
-<%= link_to "Add new Restaurant", new_restaurant_path,class: "btn btn-primary btn-sm" %>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -7,8 +8,6 @@
       <th>Description</th>
       <th>Address</th>
       <th>Actions</th>
-      <%# <th> create new restaurant </th> %>
-     <%# <th><td><%= link_to "enter new restaurant",,class: "btn btn-primary" %></td></th>
     </tr>
   </thead>
   <tbody>
@@ -17,12 +16,18 @@
         <td><%= rest.name %></td>
         <td><%= rest.description %></td>
         <td><%= rest.address %></td>
-       <td class="d-flex">
-       <%= link_to "view cuisines",restaurant_cuisines_path(rest), class: "btn btn-primary" %> 
-       <%= link_to "update restaurant", edit_restaurant_path(rest),class: "btn btn-primary" %>
-       <%= button_to "delete restaurant", restaurant_path(rest), method: :delete,class: "btn btn-primary" %></td>
+        <td class="d-flex">
+        <% if current_user.admin? %>
+        <%= link_to "view cuisines",restaurant_cuisines_path(rest), class: "btn btn-primary" %> 
+        <%= link_to "update restaurant", edit_restaurant_path(rest),class: "btn btn-primary" %>
+        <%= link_to "Add new Restaurant", new_restaurant_path,class: "btn btn-primary btn-sm" %>
+        <%= button_to "delete restaurant", restaurant_path(rest), method: :delete,class: "btn btn-primary" %></td>
+     <% else %>
+        <%= link_to "view cuisines",restaurant_cuisines_path(rest), class: "btn btn-primary" %> 
+      <% end %>
       </tr>
       <% end %>
     </tbody>
   </table>
+  <% end %>
 <%# restaurant_cuisine_index_path(rest.id) %>

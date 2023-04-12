@@ -1,6 +1,11 @@
- <%= form_with model: @cuisine do |f| %>
+ 
+ <%= form_with  model:  [ @restaurant , @cuisine ]  do |f| %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.submit "Add cuisine" %>
+   <%= f.label :name %><br>
+   <%= f.text_field :name %>
+
+   <%= f.label :name, "Restaurant Id"%><br>
+   <%= f.text_field :restaurant_id %>
+   <%= f.submit "Add Cuisine" %>
+
 <% end %>

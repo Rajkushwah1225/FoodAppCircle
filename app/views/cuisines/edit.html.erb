@@ -1,0 +1,16 @@
+ <%= @cuisine.name %>
+ <%= form_with model: @cuisine  , method: :patch do |form| %>
+  <div>
+    <%= form.label :name %><br> 
+    <%= form.text_field :name %>
+  </div>
+  
+  <div>
+    <%= form.label :restaurant_id %><br>
+    <%= form.text_area :restaurant_id %>
+  </div>
+  
+  <div>
+    <%= form.submit "Update Cuisine" %>
+  </div>
+<% end %>
