@@ -1,0 +1,4 @@
+<td>
+  <%= link_to "Edit", edit_restaurant_cuisine_path(cuisine) %>
+  <%= link_to "Delete",restaurant_cuisine_path(cuisine), method: :delete  %>
+</td>

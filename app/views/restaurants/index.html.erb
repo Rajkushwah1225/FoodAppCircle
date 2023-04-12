@@ -17,9 +17,10 @@
         <td><%= rest.name %></td>
         <td><%= rest.description %></td>
         <td><%= rest.address %></td>
-       <%=td class="d-flex justify-content:right"><%= link_to "view cuisines",cuisines_new_path,class: "btn btn-primary" %> 
-       <%= link_to "update restaurant",edit_restaurants_path(rest),class: "btn btn-primary" %>
-       <%= button_to "delete restaurant", restaurants_path(rest),method: :delete,class: "btn btn-primary" %></td>
+       <td class="d-flex">
+       <%= link_to "view cuisines",restaurant_cuisines_path(rest), class: "btn btn-primary" %> 
+       <%= link_to "update restaurant", edit_restaurant_path(rest),class: "btn btn-primary" %>
+       <%= button_to "delete restaurant", restaurant_path(rest), method: :delete,class: "btn btn-primary" %></td>
       </tr>
       <% end %>
     </tbody>

@@ -1,4 +1,4 @@
-class CuisineController < ApplicationController
+class CuisinesController < ApplicationController
   
   # def index
   #   @cuisines = Cuisine.all
@@ -9,39 +9,34 @@ class CuisineController < ApplicationController
   #     # end
   # end
   def index
-    @cuisines = Cuisine.all
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @cuisine = @restaurant.cuisines.paginate(page: params[:page])
   end
-
+  
  
-  def show
-    @cuisine = Cuisine.find(params[:id])
+  def create
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @cuisine = @restaurant.cuisines.build(cuisine_params)
+    if @cuisine.save
+      redirect_to restaurant_cuisines_path(@restaurant), notice: "Cuisine created "
+    else
+      render :new
+    end
   end
 
   def new
     @cuisine = Cuisine.new
   end
 
-  def create
-    @cuisine = Cuisine.new(cuisine_params)
-    if @cuisine.save
-      redirect_to @cuisine, notice: "cuisine created successfully"
-    else
-      render :new
-    end
+  def show
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @cuisine = @restaurant.cuisines.find(params[:id])
   end
 
   def edit
     @cuisine = Cuisine.find(params[:id])
   end
 
-  def update
-    @cuisine = Restaurant.find(params[:id])
-    if @cuisine.update(cuisine_params)
-      redirect_to @cuisine, notice: "cuisine updated successfully"
-    else
-      render :edit
-    end
-  end
 
   def destroy
     @cuisine = Cuisine.find(params[:id])
@@ -52,6 +47,6 @@ class CuisineController < ApplicationController
   private
 
   def cuisine_params
-    params.require(:cuisine).permit(:name)
+    params.require(:cuisine).permit(:name,restaurant_id)
   end
 end
