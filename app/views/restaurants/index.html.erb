@@ -17,13 +17,14 @@
         <td><%= rest.description %></td>
         <td><%= rest.address %></td>
         <td class="d-flex">
-        <% if current_user.admin? %>
+      <% if current_user.admin? %>
         <%= link_to "view cuisines",restaurant_cuisines_path(rest), class: "btn btn-primary" %> 
         <%= link_to "update restaurant", edit_restaurant_path(rest),class: "btn btn-primary" %>
         <%= link_to "Add new Restaurant", new_restaurant_path,class: "btn btn-primary btn-sm" %>
-        <%= button_to "delete restaurant", restaurant_path(rest), method: :delete,class: "btn btn-primary" %></td>
-     <% else %>
-        <%= link_to "view cuisines",restaurant_cuisines_path(rest), class: "btn btn-primary" %> 
+        <%= link_to "delete restaurant", restaurant_path(rest), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },method: :delete,class: "btn btn-primary" %></td>
+      <% else %>
+        <%= link_to "view cuisines",restaurant_cuisines_path(rest), class: "btn btn-primary" %>
+        <%= button_to "show food","/cuisines/cuisine", class: "btn btn-primary" %> 
       <% end %>
       </tr>
       <% end %>

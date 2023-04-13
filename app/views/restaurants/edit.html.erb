@@ -1,19 +1,19 @@
 <h1>Edit <%= @restaurant.name %></h1>
 
 <%= form_with model:@restaurant, method: :patch do |form| %>
-  <div>
+  <div class="form-group">
     <%= form.label :name %><br>
-    <%= form.text_field :name %>
+    <%= form.text_field :name ,class:"form-control" %>
   </div>
   
-  <div>
+  <div class="form-group">
     <%= form.label :description %><br>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class="form-control"%>
   </div>
   
-  <div>
+  <div class="form-group">
     <%= form.label :address %><br>
-    <%= form.text_field :address %>
+    <%= form.text_field :address,class="form-group" %>
   </div>
   
   <div>
