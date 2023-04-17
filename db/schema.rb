@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_13_111035) do
-  create_table "cities", force: :cascade do |t|
-    t.string "name"
+ActiveRecord::Schema[7.0].define(version: 2023_04_17_120430) do
+  create_table "carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "cuisine_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -22,15 +23,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_13_111035) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "restaurant_id"
-  end
-
-  create_table "fooditems", force: :cascade do |t|
-    t.string "name"
     t.string "description"
     t.integer "price"
+    t.string "cuisine_type"
+    t.integer "cart_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "cart_id"
+    t.integer "user_id"
+    t.string "restaurant_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "cuisine_id"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.integer "total_price"
+    t.integer "status"
   end
 
   create_table "restaurants", force: :cascade do |t|

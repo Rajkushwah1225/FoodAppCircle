@@ -75,4 +75,7 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'will_paginate', '3.1.8'
 gem 'bootstrap-will_paginate', '1.0.0'
+gem 'htmlbeautifier'
+gem 'letter_opener', group: :development
+gem 'byebug'
 

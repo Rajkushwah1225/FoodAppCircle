@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
-   get 'fooditems/index'
-  # get 'fooditems/new'
-  # get 'fooditems/create'
-  # get 'fooditems/update'
-  # get 'fooditems/edit'
-  # get 'fooditems/destroy'
-  # get  "homes/home"
-  
-  resources :fooditems
-  root "homes#index"
-  
-  devise_for :users
+ resources :orders
+  root "homes#index" 
+  resources :homes
+  resources :carts do 
+    collection do
+      get :carts_cuisines
+    end
+   end
+   
+   devise_for :users
   resources :restaurants do
-     resources :cuisines
+     resources :cuisines do
+      resources :carts 
+
+     end
   end
 end

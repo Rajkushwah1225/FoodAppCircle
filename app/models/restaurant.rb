@@ -1,6 +1,5 @@
 class Restaurant < ApplicationRecord
-    has_many :cuisines, dependent: :destroy
-    has_many :fooditems, through: :cuisines
+    has_many :cuisines,  dependent: :destroy
     validates :name, :address, presence: true
     validates :name, uniqueness: true
 end

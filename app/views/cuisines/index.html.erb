@@ -1,31 +1,37 @@
 <% if user_signed_in? %>
-
-<h3> List of Cuisines </h3>
+<h3> Food Items list</h3>
 <table class="table">
  <thead> 
   <tr>
-   <th>Name </th>
+   <th>Food Name</th>
    <th>Restaurant_ID</th>
+   <th>Description</th>
+   <th>Price</th>
+   <th>Cuisine-type</th>
    <th>Actions</th>
-  </tr>
-</thead>
-<tbody>
- <% @cuisine.each do |cuis| %>
-  <tr> 
-   <td><%= cuis.name %></td>
-   <td><%= cuis.restaurant_id %></td>
-  <td>
-   <% if current_user.admin? %>
-      <td><%= link_to "create cuisine", new_restaurant_cuisine_path , class: "btn btn-primary" %></td>
-      <%#= link_to "", "" , class: "btn btn-primary" %> 
-      <%#= link_to "Edit", edit_restaurant_cuisine_path , class: "btn btn-primary" %>
-      <%#= link_to "Delete", restaurant_cuisine_path , method: :delete , class: "btn btn-primary" %>   
-    <% else %>
-      <%= link_to "show food items", "fooditems/index" , class: "btn btn-primary" %>
+  </tr> 
+ </thead> 
+ <tbody>
+  <% @cuisine.each do |cuisine| %>
+   <tr> 
+    <td><%= cuisine.name %></td>
+    <td><%= cuisine.restaurant_id %></td>
+    <td><%= cuisine.description %></td>
+    <td><%= cuisine.price %></td>
+    <td><%= cuisine.cuisine_type %></td>
+    <td>
+      <% if current_user.admin? %>
+    <td>
+      <%= link_to "create cuisine", new_restaurant_cuisine_path , class:"btn btn-outline-primary mr-1" %>
+      <%= link_to "Edit", edit_restaurant_cuisine_path(cuisine.restaurant_id, cuisine) , class:"btn btn-outline-primary mr-1" %>
+      <%= link_to "Delete", restaurant_cuisine_path(cuisine.restaurant_id, cuisine) ,data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, method: :delete ,  class:"btn btn-outline-primary mr-1" %>   
+      <%= link_to "Add to Cart", restaurant_cuisine_carts_path(cuisine.restaurant, cuisine), method: :post, class:"btn btn-outline-primary mr-1" %></td>
+      <% else %>
+       <%= button_to "Add to Cart", restaurant_cuisine_carts_path(cuisine.restaurant, cuisine), method: :post,  class:"btn btn-outline-primary mr-1" %>
     <% end %>
-  </td>
+    </td>
  </tr>
-<% end %>
+<%end%>
 </tbody>
 </table>
 <%end%>

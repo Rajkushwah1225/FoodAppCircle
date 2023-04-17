@@ -1,0 +1,6 @@
+<h1><%=@cuisine.name%></h1>
+<h1><%=@cuisine.description %><h1>
+<h1><%=@cuisine.price%><h1>
+<h1><%=@cuisine.cuisine_type%><h1>
+<%#= link_to "checkout",order_new_path(cart: @cart_cuisine) %>
+<h1><%= link_to "checkout",new_order_path(cart:@cart_cuisine) ,class:"btn btn-primary"%><h1>

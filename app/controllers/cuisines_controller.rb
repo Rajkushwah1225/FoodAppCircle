@@ -1,27 +1,18 @@
 class CuisinesController < ApplicationController
   
-  # def index
-  #   @cuisines = Cuisine.all
-  #   # if params[:search].present?
-  #     #   @cuisines = Cuisine.where("name LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
-  #     # else
-  #     #   Cuisine.all
-  #     # end
-  # end
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @cuisine = @restaurant.cuisines.paginate(page: params[:page])
+    @cuisine = @restaurant.cuisines
   end
-  
  
   def create
     @restaurant = Restaurant.find(params[:restaurant_id]) 
     @cuisine = @restaurant.cuisines.build(cuisine_params)
-    if @cuisine.save
-      redirect_to restaurant_cuisines_path(@restaurant), notice: "Cuisine created"
-    else
-      render :new
-    end
+   if @cuisine.save
+    redirect_to restaurant_cuisines_path(@restaurant), notice: "Cuisine created"
+   else
+    render :new
+   end
   end
 
   def new
@@ -30,7 +21,7 @@ class CuisinesController < ApplicationController
   end
 
   def show
-    @cuisine = @restaurant.cuisines.find(params[:id])
+    @cuisine = Cuisine.find_by(params[:id])
   end
 
   def edit
@@ -38,15 +29,26 @@ class CuisinesController < ApplicationController
     @cuisine = Cuisine.find(params[:id])
   end
 
-  def destroy
-    @cuisine = Cuisine.find(params[:id])
-    @cuisine.destroy
-    redirect_to cuisine_path, notice: "cuisine deleted"
+  def update
+    @restaurant = Restaurant.find(params[:restaurant_id]) 
+    @cuisine = @restaurant.cuisines.update(cuisine_params)
+   if @restaurant.cuisines.update(cuisine_params)
+    redirect_to restaurant_cuisines_path(@restaurant), notice: "Cuisine updated"
+   else
+    render :new
+   end
   end
 
+  def destroy
+    @restaurant = Restaurant.find(params[:restaurant_id]) 
+    @cuisine = @restaurant.cuisines.find(params[:id])
+    @cuisine.destroy
+    redirect_to  restaurant_cuisines_path, notice: "cuisine deleted"
+  end
+  
   private
 
   def cuisine_params
-    params.require(:cuisine).permit(:name)
+    params.require(:cuisine).permit(:name, :description, :price, :cuisine_type)
   end
 end
