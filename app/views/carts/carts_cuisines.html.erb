@@ -1,6 +1,9 @@
-<h1><%=@cuisine.name%></h1>
-<h1><%=@cuisine.description %><h1>
-<h1><%=@cuisine.price%><h1>
-<h1><%=@cuisine.cuisine_type%><h1>
+<div class="container">
+<h1>My order</h1>
+<p>Name-<%=@cuisine.name%></p>
+<p>Description-<%=@cuisine.description %></p>
+<p>Price-<%=@cuisine.price%></p>
+<p>Cuisine_type-<%=@cuisine.cuisine_type%></p>
 <%#= link_to "checkout",order_new_path(cart: @cart_cuisine) %>
-<h1><%= link_to "checkout",new_order_path(cart:@cart_cuisine) ,class:"btn btn-primary"%><h1>
+<%= link_to "checkout",new_order_path(cart:@cart_cuisine) ,class:"btn btn-success"%>
+</div>

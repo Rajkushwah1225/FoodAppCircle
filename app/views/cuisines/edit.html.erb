@@ -1,32 +1,26 @@
-  <h3><%= @cuisine.name %></h3>
-  <%= form_with model: [@restaurant , @cuisine] do |form| %>
   
+<h3><%= @cuisine.name %></h3>
+<%= form_with model: [@restaurant , @cuisine] do |form| %>
   <div class="form-group">
-    <%= form.label :name %> 
+    <%= form.label :name %>
     <%= form.text_field :name, class:"form-central" %>
   </div>
-  
   <div class="form-group">
     <%= form.label :restaurant_id %>
     <%= form.text_area :restaurant_id , class:"form-central"%>
   </div>
-
-
-   <div class="form-group">
+  <div class="form-group">
     <%= form.label :description %>
     <%= form.text_area :description , class:"form-central"%>
   </div>
-  
   <div class="form-group">
     <%= form.label :price %>
     <%= form.text_area :price ,class:"form-central"%>
   </div>
-  
   <div class="form-group">
     <%= form.label :cusine_type %>
     <%= form.text_area :cuisine_type ,class:"form-central"%>
   </div>
-  
   <div>
     <%= form.submit "Update Cuisine" %>
   </div>

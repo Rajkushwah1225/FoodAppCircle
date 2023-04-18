@@ -1,40 +1,47 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
- <div class="container-fluid">
-   <a class="navbar-brand" href="/">Food App</a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-   <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="/">Home</a>
-     </li>
-  <% if user_signed_in? %>
-    <li class="nav-item">
-      <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
-    </li>
-    
-    <li class="nav-item">
-      <%= link_to "Add Restaurants", restaurants_path ,  class:"nav-link" %>
-    </li>
-   
-    <li class="nav-item">
-      <%= link_to "Cart", carts_cuisines_carts_path  ,  class:"nav-link" %>
-    </li>
-   
-   <%else %>
-    
-    <li class="nav-item">
-     <%=link_to "Sign Up", new_user_registration_path ,class:"nav-link" %>
-    </li>
-    
-    <li class="nav-item">
-      <%=link_to "Sign in", new_user_session_path ,class:"nav-link" %>
-    </li>
-  
-  <%end %>
-     </div>
-    </ul>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Food App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
+            <li class="nav-item">
+              <%= link_to "Add Restaurants", new_restaurant_path ,  class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "View Restaurants", restaurants_path ,  class:"nav-link" %>
+            </li>
+          <%else%>
+            <li class="nav-item">
+              <%= link_to "View Restaurants", restaurants_path ,  class:"nav-link" %>
+            </li>
+          <%end%>
+          <li class="nav-item">
+            <%= link_to "Cart", carts_cuisines_carts_path  ,  class:"nav-link" %>
+          </li>
+          <div class="nav-item">
+            <li>
+              <%= link_to "my order" , orders_path , class:"nav-link" %>
+            </li>
+          </div>
+        <%end %>
+      </div>
+      <% if user_signed_in? %>
+        <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
+      <%else %>
+        <div class="nav-item">
+          <%=link_to "Sign Up", new_user_registration_path ,class:"nav-link" %>
+        </div>
+        <div class="nav-item">
+          <%=link_to "Sign in", new_user_session_path ,class:"nav-link" %>
+        </div>
+      <%end %>
     </div>
-  </div>
+  </ul>
+</div>
 </nav>

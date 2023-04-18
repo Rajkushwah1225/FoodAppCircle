@@ -1,24 +1,21 @@
   <%= form_with  model:  [ @restaurant , @cuisine ]  do |f| %>
-   <div class="form-group">
-   <%= f.label :name %><br>
-   <%= f.text_field :name ,class:"form-group"%>
+  <div class="container">
+    <div class="form-group">
+      <%= f.label :name %><br>
+      <%= f.text_field :name ,class:"form-group"%>
+    </div>
+    <div class="form-group">
+      <%= f.label :description %><br>
+      <%= f.text_field :description ,class: "form-group"%>
+    </div>
+    <div class= "form-group">
+      <%= f.label :price %><br>
+      <%= f.text_field :price ,class:"form-group"%>
+    </div>
+    <div class= "form-group">
+      <%= f.label :cuisine %><br>
+      <%= f.text_field :cuisine ,class: "form-group"%>
+    </div>
+    <%= f.submit "Add Cuisine" %>
   </div>
-  
-  <div class="form-group">
-   <%= f.label :description %><br>
-   <%= f.text_field :description ,class: "form-group"%>
-  </div>
-
-  <div class= "form-group">
-   <%= f.label :price %><br>
-   <%= f.text_field :price ,class:"form-group"%>
-  </div>
-
-  <div class= "form-group">
-   <%= f.label :cuisine %><br>
-   <%= f.text_field :cuisine ,class: "form-group"%>
-  </div>
-  <%= f.submit "Add Cuisine" %>
- <% end %>
-
-
+<% end %>

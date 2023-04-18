@@ -1,18 +1,17 @@
 class CuisinesController < ApplicationController
-  
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
     @cuisine = @restaurant.cuisines
   end
- 
+
   def create
-    @restaurant = Restaurant.find(params[:restaurant_id]) 
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @cuisine = @restaurant.cuisines.build(cuisine_params)
-   if @cuisine.save
-    redirect_to restaurant_cuisines_path(@restaurant), notice: "Cuisine created"
-   else
-    render :new
-   end
+    if @cuisine.save
+      redirect_to restaurant_cuisines_path(@restaurant), notice: "Cuisine created"
+    else
+      render :new
+    end
   end
 
   def new
@@ -30,22 +29,22 @@ class CuisinesController < ApplicationController
   end
 
   def update
-    @restaurant = Restaurant.find(params[:restaurant_id]) 
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @cuisine = @restaurant.cuisines.update(cuisine_params)
-   if @restaurant.cuisines.update(cuisine_params)
-    redirect_to restaurant_cuisines_path(@restaurant), notice: "Cuisine updated"
-   else
-    render :new
-   end
+    if @restaurant.cuisines.update(cuisine_params)
+      redirect_to restaurant_cuisines_path(@restaurant), notice: "Cuisine updated"
+    else
+      render :new
+    end
   end
 
   def destroy
-    @restaurant = Restaurant.find(params[:restaurant_id]) 
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @cuisine = @restaurant.cuisines.find(params[:id])
     @cuisine.destroy
-    redirect_to  restaurant_cuisines_path, notice: "cuisine deleted"
+    redirect_to restaurant_cuisines_path, notice: "cuisine deleted"
   end
-  
+
   private
 
   def cuisine_params

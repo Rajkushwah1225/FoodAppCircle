@@ -1,7 +1,6 @@
 class RestaurantsController < ApplicationController
-
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.all.paginate(page: params[:page], :per_page => 10)
   end
 
   def show
@@ -27,11 +26,11 @@ class RestaurantsController < ApplicationController
 
   def update
     @restaurant = Restaurant.find_by(params[:id])
-   if @restaurant.update(params_restaurant)
-    redirect_to restaurants_path, notice: "Restaurant updated successfully"
-   else
-    render :edit
-   end
+    if @restaurant.update(params_restaurant)
+      redirect_to restaurants_path, notice: "Restaurant updated successfully"
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -40,10 +39,9 @@ class RestaurantsController < ApplicationController
     redirect_to restaurant_path, notice: "Restaurant deleted successfully"
   end
 
-
-private
+  private
 
   def params_restaurant
-    params.require(:restaurant).permit( :name, :description, :address)
+    params.require(:restaurant).permit(:name, :description, :address)
   end
 end
