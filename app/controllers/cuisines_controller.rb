@@ -1,7 +1,8 @@
 class CuisinesController < ApplicationController
+  
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @cuisine = @restaurant.cuisines
+    @cuisine = @restaurant.fooditems
   end
 
   def create

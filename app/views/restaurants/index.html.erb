@@ -22,7 +22,7 @@
                 <%= link_to "update restaurant", edit_restaurant_path(rest), class: "btn btn-outline-primary mr-1" %>
                 <%= link_to "delete restaurant", restaurant_path(rest), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },method: :delete,class:"btn btn-outline-primary mr-1" %></td>
             <% else %>
-              <%= link_to "Menu",restaurant_cuisines_path(rest), class: "btn btn-primary" %>
+              <%= link_to "Menu",restaurant_fooditems_path(rest), class: "btn btn-primary" %>
             <% end %>
           </tr>
         <% end %>

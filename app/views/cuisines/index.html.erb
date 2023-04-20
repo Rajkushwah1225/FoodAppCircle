@@ -1,10 +1,11 @@
 <% if user_signed_in? %>
-  <h3> Food Items list</h3>
+<div class="container">
+  <h3>Food Items list</h3>
   <table class="table">
     <thead>
       <tr>
         <th>Food Name</th>
-        <th>Restaurant_ID</th>
+        <th>Restaurant_id</th>
         <th>Description</th>
         <th>Price</th>
         <th>Cuisine-type</th>
@@ -12,13 +13,13 @@
       </tr>
     </thead>
     <tbody>
-      <% @cuisine.each do |cuisine| %>
+      <% @fooditem.each do |fooditem| %>
         <tr>
-          <td><%= cuisine.name %></td>
-          <td><%= cuisine.restaurant_id %></td>
-          <td><%= cuisine.description %></td>
-          <td><%= cuisine.price %></td>
-          <td><%= cuisine.cuisine_type %></td>
+          <td><%= fooditem.name %></td>
+          <td><%= fooditem.restaurant_id %></td>
+          <td><%= fooditem.description %></td>
+          <td><%= fooditem.price %></td>
+          <td><%= fooditem.cuisine_type %></td>
           <td>
             <% if current_user.admin? %>
               <td>
@@ -35,3 +36,4 @@
     </tbody>
   </table>
 <%end%>
+</div>

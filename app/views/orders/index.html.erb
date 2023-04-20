@@ -1,5 +1,5 @@
-<% if user = current_user %>
-  <div class="container">
+<% if user_signed_in? %>
+<div class="container">
     <h1>Orders Details</h1>
     <table class="table table-dark table-striped">
       <thead>
@@ -29,8 +29,7 @@
                 <td><%= link_to "Cancel order", order_orders_cancelled_path(order) , method: :cancelled , class: "btn btn-danger" %>
                 </td>
               </tr>
-            </div>
           <%end%>
         <%end%>
       <%end%>
-    <% end %>
+    </div>

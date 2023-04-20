@@ -1,6 +1,7 @@
  <%#= link_to "show all order" , order_path(order.id), :method :patch, class:"btn btn-primary"  %>
-<h3>orders list</h3>
+
 <div class="container">
+<h3>orders list</h3>
   <%= form_with model: @order do |order| %>
     <%= order.hidden_field :cart_id ,value: @cart.id %>
     <%= order.hidden_field :user_id ,value:current_user.id %>

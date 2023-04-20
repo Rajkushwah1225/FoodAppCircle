@@ -1,25 +1,29 @@
 Rails.application.routes.draw do
- resources :orders do
-  get '/orders/confirmed'
-  get '/orders/cancelled'
-  get '/orders/rejected'
- end
-  
- root "homes#index" 
-  resources :homes
-    resources :carts do 
-      collection do
-      get :carts_cuisines
+  resources :orders do
+    get "/orders/confirmed"
+    get "/orders/cancelled"
+    get "/orders/rejected"
+  end
+
+  root "homes#index"
+
+  #resources: restaurants , as: "user_restaurant", path: "users/:user_id/restaurant"
+  #get '/orders/confirmed', to: 'orders#confirmed'
+  #get '/orders/pending', to: 'orders#pending'
+  #get '/orders/cancelled', to: 'orders#cancelled'
+  devise_for :users
+
+  resource :cart, only: [:show], as: "user_cart", path: "users/:user_id/cart"
+
+  resources :cart do
+    resources :cartitems do
+      get :increase_quantity
+      get :decrease_quantity
+      get :remove_item
     end
   end
-   #get '/orders/confirmed', to: 'orders#confirmed'
-   #get '/orders/pending', to: 'orders#pending'
-   #get '/orders/cancelled', to: 'orders#cancelled'
-  devise_for :users
-  resources :restaurants do
-     resources :cuisines do
-      resources :carts 
 
-     end
+  resources :restaurants do
+    resources :fooditems
   end
 end

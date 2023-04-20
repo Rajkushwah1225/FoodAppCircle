@@ -1,9 +1,0 @@
-<div class="container">
-<h1>My order</h1>
-<p>Name-<%=@cuisine.name%></p>
-<p>Description-<%=@cuisine.description %></p>
-<p>Price-<%=@cuisine.price%></p>
-<p>Cuisine_type-<%=@cuisine.cuisine_type%></p>
-<%#= link_to "checkout",order_new_path(cart: @cart_cuisine) %>
-<%= link_to "checkout",new_order_path(cart:@cart_cuisine) ,class:"btn btn-success"%>
-</div>

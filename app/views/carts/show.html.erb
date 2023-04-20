@@ -1,0 +1,39 @@
+<div class="container">
+<h1> My order</h1>
+<td><%= link_to "checkout",new_order_path(cart:@carts_fooditem ),class:"btn btn-success"%></td>
+<table class="table table-striped">
+<thead>
+ <tr> 
+  <th> S.no </th>
+  <th> Food Name </th>
+  <th> Price </th>
+  <th> Quantity </th>
+  <tr>
+</thead>
+<tbody>
+<% @cart_items.each do |cart_item| %>
+ <tr>
+   <td><%= @cart_items.index(cart_item) + 1 %></td>
+   <td><%= cart_item.fooditem.name %></td>
+   <td><%= cart_item.fooditem.price %></td>
+   <td><%= cart_item.quantity %></td>
+    <td><%#= link_to "cancel", order_orders_confirmed_path(order) , method: :confirmed , class: "btn btn-success" %>
+  
+  <td><%#= link_to "delete",restaurant_fooditem_path(cart_item.id), method: :delete ,class:"btn btn-success"%></td>
+  <%#= link_to "cancel",'#' , class:"btn btn-success"%></td>
+  <td><%= link_to "+",cart_cartitem_path(cart_item.cart,cart_item, context: 'add'),  data: {"turbo-method": :patch} , class:"btn btn-success"%></td>
+  <td><%= link_to "-", cart_cartitem_path(cart_item.cart,cart_item, context: 'delete'),  data: {"turbo-method": :patch}  ,class:"btn btn-success"%></td>
+  <td><%= link_to "remove",cart_cartitem_path(cart_item.cart,cart_item),method: :delete , class:"btn btn-success"%></td>
+ </tr>
+<% end %>
+
+
+<%#= link_to "checkout",order_new_path(cart: @cart_cuisine) %>
+
+</div>
+</tbody>
+</table>
+
+
+
+

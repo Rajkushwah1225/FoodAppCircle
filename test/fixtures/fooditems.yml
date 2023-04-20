@@ -4,8 +4,12 @@ one:
   name: MyString
   description: MyString
   price: 1
+  restaurant_id: 1
+  cuisine_id: 1
 
 two:
   name: MyString
   description: MyString
   price: 1
+  restaurant_id: 1
+  cuisine_id: 1

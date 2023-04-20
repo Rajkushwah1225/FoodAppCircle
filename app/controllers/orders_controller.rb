@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @cart = Cart.find(params[:cart])
+    @cartitem = Cartitem.find_by(fooditem_id: params[:fooditem_id])
     @order = Order.new
   end
 
@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
       flash[:success] = "Thank you for your order"
       redirect_to @order
     else
-      flash.now[:error] = "Your order form had some errors"
+      flash.now[:error] = "some errors occur"
       render :new
     end
   end

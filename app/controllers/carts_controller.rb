@@ -1,18 +1,49 @@
 class CartsController < ApplicationController
-  def carts_cuisines
-    @cart_cuisine = current_user.cart
-    @cuisine = Cuisine.find(@cart_cuisine.cuisine_id)
+  #before_action :set_food_item, only: :create
+  #before_action :set_cart_item, except: :destroy
+
+  # def create
+  #   CartItem.create(cart: current_user.cart, food_item: food_item)
+  # end
+  def show
+    @cart_items = current_user.cart.cartitems
   end
 
-  def create
-    @restaurant = Restaurant.find_by(id: params[:restaurant_id])
-    @cuisine = Cuisine.find_by(id: params[:cuisine_id])
-    @cart = Cart.new(cuisine_id: @cuisine.id)
-    @cart.user_id = current_user.id
-    if @cart.save
-      redirect_to request.referrer
-    else
-      redirect_to request.referrer
-    end
+# def update
+#   @cart_item.update_quantity(params[:action].to_sym)
+# end
+
+# def destroy
+#   @cart_item.destroy
+# end
+
+# private
+  
+# def set_food_item
+#   @food_item = FoodItem.find(params[:food_item_id])
+# end
+
+# def set_cart_item
+#   @cart_item = CartItem.find(id)
+# end
+  def confirmed
+   @order = Order.find(params[:order_id])
+   @order.update(status: :Confirmed)
+   flash[:success] = "your order has been Confirmed"
+   redirect_to request.referrer
   end
+
+  def update_quantity action
+   if action == :increase
+     self.update(qty: :qty)
+   else action == :decrease
+   end
+ end
+
+ def cancel_item
+  @cart = Cart.find(params[:cart_id])
+  @cart.update(status: :Cancelled)
+  flash[:success] = "cancelled"
+  redirect_to request.referrer
+ end
 end
