@@ -1,6 +1,6 @@
 <div class="container">
 <h1> My order</h1>
-<td><%= link_to "checkout",new_order_path(cart:@carts_fooditem ),class:"btn btn-success"%></td>
+<td><%= link_to "checkout",new_order_path(restaurant_id: @restaurant_id, fooditem_ids: @cart_items.pluck(:fooditem_id)),class:"btn btn-success"%></td>
 <table class="table table-striped">
 <thead>
  <tr> 
@@ -21,9 +21,21 @@
   
   <td><%#= link_to "delete",restaurant_fooditem_path(cart_item.id), method: :delete ,class:"btn btn-success"%></td>
   <%#= link_to "cancel",'#' , class:"btn btn-success"%></td>
-  <td><%= link_to "+",cart_cartitem_path(cart_item.cart,cart_item, context: 'add'),  data: {"turbo-method": :patch} , class:"btn btn-success"%></td>
-  <td><%= link_to "-", cart_cartitem_path(cart_item.cart,cart_item, context: 'delete'),  data: {"turbo-method": :patch}  ,class:"btn btn-success"%></td>
-  <td><%= link_to "remove",cart_cartitem_path(cart_item.cart,cart_item),method: :delete , class:"btn btn-success"%></td>
+  
+  <td>
+     <%= button_to "+", cart_cartitem_path(cart_item.cart, cart_item, context: 'add'),   method: :patch , class:"btn btn-success"%>
+  </td>
+  
+  <td>
+    <% if cart_item.quantity > 1 %>
+      <%= button_to "-", cart_cartitem_path(cart_item.cart , cart_item, context: 'delete'),  method: :patch ,class:"btn btn-success"%>
+    <% end %>
+  </td>
+  
+  <td>
+   <%= button_to "remove", cart_cartitem_path(cart_item.cart , cart_item) , method: :delete , class:"btn btn-success" %>
+  </td>
+ 
  </tr>
 <% end %>
 

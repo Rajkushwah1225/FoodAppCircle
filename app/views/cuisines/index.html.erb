@@ -5,10 +5,7 @@
     <thead>
       <tr>
         <th>Food Name</th>
-        <th>Restaurant_id</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Cuisine-type</th>
+    
         <th>Actions</th>
       </tr>
     </thead>
@@ -16,10 +13,7 @@
       <% @fooditem.each do |fooditem| %>
         <tr>
           <td><%= fooditem.name %></td>
-          <td><%= fooditem.restaurant_id %></td>
-          <td><%= fooditem.description %></td>
-          <td><%= fooditem.price %></td>
-          <td><%= fooditem.cuisine_type %></td>
+        
           <td>
             <% if current_user.admin? %>
               <td>

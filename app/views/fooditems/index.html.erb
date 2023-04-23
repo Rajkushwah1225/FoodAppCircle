@@ -5,6 +5,7 @@
    <th>Name</th>
    <th>Description</th>
    <th>Price</th>
+   <th>Actions</th>
   </tr>
 </thead>
 <tbody>
@@ -14,13 +15,20 @@
    <td><%= fooditem.description %></td>
    <td><%= fooditem.price %></td>
   <td>
-  <%= button_to "add", cart_cartitems_path(current_user.cart, fooditem_id: fooditem.id), method: :post,  class:"btn btn-outline-primary mr-1" %>
-   <%#= link_to "Edit", edit_fooditem_path(fooditem),class: "btn btn-primary" %>
-   <%#= link_to "add new items", new_fooditem_path ,class: "btn btn-primary" %>
-   <%#= link_to "delete item items", fooditem_path(fooditem) , data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: "btn btn-primary" %>
-   <%#= link_to "Delete", fooditem_path(fooditem), method: :delete,data:{confirm:are you delete this item},class: "btn btn-danger" %>
+  <% if can? :read, @post %>
+  <%= link_to "View", @post %>
+    <% if current_user.admin? %>
+   <%= link_to "create  footitem", new_restaurant_fooditem_path , class:"btn btn-outline-primary mr-1" %>
+   <%= link_to "Edit", edit_restaurant_fooditem_path(fooditem.restaurant_id, fooditem) , class:"btn btn-outline-primary mr-1" %>
+   <%= link_to "delete item items",   restaurant_fooditems_url(fooditem.restaurant_id,fooditem) , data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: "btn btn-outline-primary mr-1" %>
+   <%else%>
+   <%= button_to "add", cart_cartitems_path(current_user.cart, fooditem_id: fooditem.id), method: :post,  class:"btn btn-outline-primary mr-1" %>
   </td>
  </tr>
 <% end %>
+ 
+<% end %>
+<% end%>
 </tbody>
 </table>
+ 

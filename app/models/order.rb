@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-    belongs_to :cart
-    belongs_to :user
-    enum status: [:Pending, :Confirmed, :Rejected, :Cancelled]
+  belongs_to :user
+  enum status: [:Pending, :Confirmed, :Rejected, :Cancelled]
+  serialize :fooditem_ids, Array
 end

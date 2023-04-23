@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
-  resources :orders do
-    get "/orders/confirmed"
-    get "/orders/cancelled"
-    get "/orders/rejected"
+
+ devise_for :users
+ resources :orders
+ 
+  resources :cartitems do  
+   resources :orders do
+     get "/orders/confirmed"
+     get "/orders/cancelled"
+     get "/orders/rejected"
   end
+end
 
   root "homes#index"
 
@@ -11,7 +17,7 @@ Rails.application.routes.draw do
   #get '/orders/confirmed', to: 'orders#confirmed'
   #get '/orders/pending', to: 'orders#pending'
   #get '/orders/cancelled', to: 'orders#cancelled'
-  devise_for :users
+
 
   resource :cart, only: [:show], as: "user_cart", path: "users/:user_id/cart"
 

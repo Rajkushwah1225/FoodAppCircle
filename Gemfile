@@ -78,4 +78,6 @@ gem 'bootstrap-will_paginate'
 gem 'letter_opener', group: :development
 gem 'byebug'
 gem 'htmlbeautifier'
+gem 'cancancan'
+
 

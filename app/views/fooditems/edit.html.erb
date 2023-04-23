@@ -1,5 +1,6 @@
 <h1> Edit Food Items</h1>
-<%= form_with model: @fooditem  do |form|%>
+<h3><%= @fooditem.name %></h3>
+<%= form_with model:[@restaurant , @fooditem]  do |form| %>
  <div class = "form-group">
    <%= form.label :name%>
    <%= form.text_field :name,class: "form-control" %> 

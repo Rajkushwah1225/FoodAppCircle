@@ -5,5 +5,4 @@ class Cart < ApplicationRecord
     #has_many :orders
     has_many :cartitems
     validates :user_id, presence: true
-   
 end

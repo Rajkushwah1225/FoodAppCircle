@@ -1,19 +1,19 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.all
+    @orders = current_user.orders
   end
 
   def new
-    @cartitem = Cartitem.find_by(fooditem_id: params[:fooditem_id])
     @order = Order.new
   end
 
   def create
     @order = Order.new(order_params)
-    @user = current_user
+    @order.user_id = current_user.id
+    @order.total_price = Fooditem.where(id: params[:order][:fooditem_ids]).pluck(:price).sum
     if @order.save
       @order.update(status: 0)
-      UserMailer.order_mail(@user.email).deliver_now
+      UserMailer.order_mail(current_user.email).deliver_now
       flash[:success] = "Thank you for your order"
       redirect_to @order
     else
@@ -51,7 +51,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:cart_id, :user_id, :address, :city, :state, :total_price)
+    params.require(:order).permit(:status , :address, :restaurant_id, fooditem_ids: [])
   end
 end
 

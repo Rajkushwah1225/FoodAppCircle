@@ -5,8 +5,6 @@ class CreateRestaurants < ActiveRecord::Migration[7.0]
       t.string :description
       t.string :address
       t.string :index
-      #remove_column :restaurants, :cuisine_id , :integer
-      add_column :restaurants, :fooditem_id , :integer
       t.timestamps
     end
   end
