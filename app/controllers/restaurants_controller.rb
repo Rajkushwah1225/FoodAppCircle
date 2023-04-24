@@ -1,4 +1,7 @@
 class RestaurantsController < ApplicationController
+ authorize_resource
+ before_action :authenticate_user!,only: [:edit,:update,:destroy]
+  
   def index
     @restaurants = Restaurant.all.paginate(page: params[:page], :per_page => 10)
   end
@@ -14,7 +17,7 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(params_restaurant)
     if @restaurant.save
-      redirect_to restaurants_path, notice: "Restaurant created successfully"
+     redirect_to restaurants_path, notice: "Restaurant created successfully"
     else
       render :new
     end

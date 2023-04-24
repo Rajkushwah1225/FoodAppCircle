@@ -1,4 +1,5 @@
 class CartitemsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_cartitem, only: [:edit, :update, :destroy]
 
   def new; end

@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  #before_action :authenticate_user!,only: [:edit,:update,:destroy]
   #before_action :set_food_item, only: :create
   #before_action :set_cart_item, except: :destroy
 
