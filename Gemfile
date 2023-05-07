@@ -54,22 +54,20 @@ group :development, :test do
 end
 
 group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
-
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
+  gem 'rspec-rails'
 end
 
 group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'factory_bot_rails'
+  gem 'shoulda-matchers'
+  gem 'faker'
+  gem 'database_cleaner'
 end
+
 gem "devise" 
 gem 'bootstrap-sass'
 gem 'jquery-rails'
@@ -79,5 +77,8 @@ gem 'letter_opener', group: :development
 gem 'byebug'
 gem 'htmlbeautifier'
 gem 'cancancan'
+ 
+
+
 
 
