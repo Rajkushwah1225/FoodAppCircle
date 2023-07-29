@@ -1,5 +1,5 @@
 require 'database-cleaner'
-shoulda::Matchers.configure do |config|
+Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec
     with.library :rails
@@ -13,10 +13,11 @@ RSpec.configure do |config|
     Databasecleaner.clean_with(:truncation)
     Databasecleaner.strategy = :truncation
   end
-
-  config.around(:each) do |example|
+end
+  
+config.around(:each) do |cuisine|
     Databasecleaner.cleaning do
-      example.run
+      cuisine.run
     end
   end
   end

@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
   end
 
   def new
+    @cart_items = 
     @order = Order.new
   end
 
@@ -51,8 +52,8 @@ class OrdersController < ApplicationController
     redirect_to request.referrer
   end
 
+  
   private
-
   def order_params
     params.require(:order).permit(:status , :address, :restaurant_id, fooditem_ids: [])
   end

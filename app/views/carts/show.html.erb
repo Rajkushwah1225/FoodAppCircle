@@ -1,6 +1,7 @@
 <div class="container">
 <h1> My order</h1>
 <td><%= link_to "checkout",new_order_path(restaurant_id: @restaurant_id, fooditem_ids: @cart_items.pluck(:fooditem_id)),class:"btn btn-success"%></td>
+<td><%= link_to "Back",restaurant_fooditems_path(restaurant_id: @restaurant_id),class:"btn btn-dark" %></td>
 <table class="table table-striped">
 <thead>
  <tr> 

@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   private
    
-def set_cart
+  def set_cart
      Cart.create(user_id: self.id)
    end
- end
+end

@@ -1,5 +1,6 @@
 class CuisinesController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
+  
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
     @cuisine = @restaurant.fooditems

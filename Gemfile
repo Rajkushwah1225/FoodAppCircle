@@ -55,7 +55,7 @@ end
 
 group :development do
   gem "web-console"
-  gem 'rspec-rails'
+  #gem 'rspec-rails'
 end
 
 group :test do
@@ -77,8 +77,10 @@ gem 'letter_opener', group: :development
 gem 'byebug'
 gem 'htmlbeautifier'
 gem 'cancancan'
- 
-
-
-
-
+gem 'faker'
+gem 'rspec-rails', group: :test
+gem 'rails_admin', '~> 3.1', '>= 3.1.2'
+gem "sassc-rails"
+gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
