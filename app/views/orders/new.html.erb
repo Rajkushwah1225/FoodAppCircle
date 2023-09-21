@@ -9,8 +9,10 @@
     </div>
     <div class="form-group" >
       <%= order.label :total_price %>
-      <% byebug %>
       <%= @cart_item.fooditem.price,class: "form-control" %>
+      <div>
+      <%= @total_price %>
+      </div>
     </div>
     <%= order.submit "submit your order", class:"btn btn-primary" %>
   <% end %>

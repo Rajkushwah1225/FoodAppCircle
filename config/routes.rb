@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
 
+
  devise_for :users
  resources :orders
  #resources :restaurants
+ resources :orders do
+  get "/orders/confirmed"
+  get "/orders/cancelled"
+  get "/orders/rejected"
+end
  
   resources :cartitems do  
-   resources :orders do
-     get "/orders/confirmed"
-     get "/orders/cancelled"
-     get "/orders/rejected"
-  end
 end
 
   root "homes#index"
@@ -34,3 +35,4 @@ end
     resources :fooditems
   end
 end
+

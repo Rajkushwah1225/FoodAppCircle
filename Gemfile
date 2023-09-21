@@ -58,15 +58,6 @@ group :development do
   #gem 'rspec-rails'
 end
 
-group :test do
-  gem "capybara"
-  gem "selenium-webdriver"
-  gem "webdrivers"
-  gem 'factory_bot_rails'
-  gem 'shoulda-matchers'
-  gem 'faker'
-  gem 'database_cleaner'
-end
 
 gem "devise" 
 gem 'bootstrap-sass'
@@ -78,9 +69,17 @@ gem 'byebug'
 gem 'htmlbeautifier'
 gem 'cancancan'
 gem 'faker'
-gem 'rspec-rails', group: :test
 gem 'rails_admin', '~> 3.1', '>= 3.1.2'
 gem "sassc-rails"
 gem 'net-smtp', require: false
 gem 'net-imap', require: false
 gem 'net-pop', require: false
+
+gem "image_processing", ">= 1.2"
+gem "aws-sdk-s3", require: false
+gem "cssbundling-rails"
+
+group :development, :test do
+  gem 'rspec-rails', ">= 3.9.0"
+end
+gem "cssbundling-rails"

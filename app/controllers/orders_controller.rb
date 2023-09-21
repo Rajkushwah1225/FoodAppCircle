@@ -1,13 +1,15 @@
 class OrdersController < ApplicationController
-  
+
   #load_and_authorize_resource
-  
+
   def index
     @orders = current_user.orders
   end
 
   def new
-    @cart_items = 
+    food_items = Fooditem.where(id: params[:fooditem_ids])
+    food_items_price = food_items.map { |f| f.price }
+    @total_price = food_items_price.inject(0) { |sum, n| sum + n }
     @order = Order.new
   end
 
@@ -46,16 +48,17 @@ class OrdersController < ApplicationController
   end
 
   def cancelled
+    cartitem = Cartitem.where(id: params[:cartitem_id])
     @order = Order.find(params[:order_id])
     @order.update(status: :Cancelled)
     flash[:success] = "your order has been cancelled"
     redirect_to request.referrer
   end
 
-  
   private
+
   def order_params
-    params.require(:order).permit(:status , :address, :restaurant_id, fooditem_ids: [])
+    params.require(:order).permit(:status, :address, :restaurant_id, fooditem_ids: [])
   end
 end
 

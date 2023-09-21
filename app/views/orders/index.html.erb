@@ -21,7 +21,7 @@
               <td><%= link_to "approve", order_orders_confirmed_path(order), class: "btn btn-success" %>
                 <%= link_to "reject", order_orders_rejected_path(order) ,method: :rejected, class: "btn btn-danger" %></td>
             <% else %>
-              <td><%= link_to "Cancel order", '#' , method: :cancelled , class: "btn btn-danger" %>
+              <td><%= link_to "Cancel order", order_orders_cancelled_path(order) , class: "btn btn-danger" %>
               </td>
             </tr>
           <%end%>

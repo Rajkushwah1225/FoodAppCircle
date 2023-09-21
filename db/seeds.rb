@@ -16,7 +16,7 @@
 
 #  for i in 1..4
 #      Cuisine.create(name: "Fooditem#{i}", restaurant_id:i, description: "good food",price:i,cart_id:i,cuisine_type:"south Indian")
-#   end
+#   end!
 for j in 4..10
 Fooditem.create(name:"fooditem#{j}", restaurant_id:3, description:"good food item #{j}", price:100)
 end
