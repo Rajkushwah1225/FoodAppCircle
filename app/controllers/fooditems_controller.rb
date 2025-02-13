@@ -1,6 +1,4 @@
 class FooditemsController < ApplicationController
-  load_and_authorize_resource
- 
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
     @fooditem = @restaurant.fooditems
@@ -17,10 +15,10 @@ class FooditemsController < ApplicationController
 
   def create
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @fooditem =  @restaurant.fooditems.build(params_fooditem)
+    @fooditem = @restaurant.fooditems.build(params_fooditem)
     if @fooditem.save
-      redirect_to new_restaurant_fooditem_path   
-     else
+      redirect_to new_restaurant_fooditem_path
+    else
       render :new
     end
   end
@@ -32,9 +30,9 @@ class FooditemsController < ApplicationController
 
   def update
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @fooditem =  @restaurant.fooditems.update(params_fooditem)
+    @fooditem = @restaurant.fooditems.update(params_fooditem)
     if @restaurant.fooditems.update(params_fooditem)
-      redirect_to request.referer, notice: "fooditems updated successfully"
+      redirect_to request.referer, notice: 'fooditems updated successfully'
     else
       render :edit
     end
@@ -44,7 +42,7 @@ class FooditemsController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
     @fooditem = @restaurant.fooditems.find(params[:id])
     @fooditem.destroy
-    redirect_to fooditems_path, notice: "fooditems deleted successfully"
+    redirect_to fooditems_path, notice: 'fooditems deleted successfully'
   end
 
   private

@@ -8,8 +8,8 @@ class User < ApplicationRecord
   after_create :set_cart
 
   private
-   
-def set_cart
-     Cart.create(user_id: self.id)
-   end
- end
+
+  def set_cart
+    Cart.create(user_id: id)
+  end
+end

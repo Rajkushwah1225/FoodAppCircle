@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <div class="container">
-    <h1>All Restaurant</h1>
+    <h1><center>All Restaurant</center><h1>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -18,7 +18,6 @@
             <td><%= rest.address %></td>
             <td class="d-flex">
               <% if current_user.admin? %>
-                <%= link_to "view cuisines",restaurant_cuisines_path(rest), class:"btn btn-outline-primary mr-1" %>
                 <%= link_to "update restaurant", edit_restaurant_path(rest), class: "btn btn-outline-primary mr-1" %>
                 <%= link_to "delete restaurant", restaurant_path(rest), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },method: :delete,class:"btn btn-outline-primary mr-1" %></td>
             <% else %>
@@ -39,3 +38,5 @@
     </div>
   </div>
 </div>
+
+

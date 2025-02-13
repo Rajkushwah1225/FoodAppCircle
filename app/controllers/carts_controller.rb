@@ -1,11 +1,12 @@
 class CartsController < ApplicationController
-  #before_action :authenticate_user!,only: [:edit,:update,:destroy]
-  #before_action :set_food_item, only: :create
-  #before_action :set_cart_item, except: :destroy
+  before_action :authenticate_user!, only: %i[edit update destroy]
+  before_action :set_food_item, only: :create
+  before_action :set_cart_item, except: :destroy
 
-  # def create
-  #   CartItem.create(cart: current_user.cart, food_item: food_item)
-  # end
+  def create 
+    CartItem.create(cart: current_user.cart, food_item: food_item)
+  end
+
   def show
     @cart_items = current_user.cart.cartitems
     @restaurant_id = @cart_items.first.fooditem.restaurant_id

@@ -1,6 +1,5 @@
 class CartitemsController < ApplicationController
-  load_and_authorize_resource
-  before_action :set_cartitem, only: [:edit, :update, :destroy]
+  before_action :set_cartitem, only: %i[edit update destroy]
 
   def new; end
 
@@ -17,27 +16,25 @@ class CartitemsController < ApplicationController
   end
 
   def update
-    if params[:context] == "add"
+    if params[:context] == 'add'
       @cartitem.update(quantity: @cartitem.quantity + 1)
-    elsif params[:context] == "delete" && @cartitem.quantity > 1
+    elsif params[:context] == 'delete' && @cartitem.quantity > 1
       quantity = @cartitem.quantity - 1
       @cartitem.update(quantity: quantity)
     end
     redirect_to request.referrer
   end
 
-  def edit
-  end
+  def edit; end
 
   def destroy
-    #@cartitem = Cartitem.find_by(fooditem_id: params[:fooditem_id])
+    # @cartitem = Cartitem.find_by(fooditem_id: params[:fooditem_id])
     @cartitem = Cartitem.find(params[:id])
     @cartitem.destroy
     redirect_to request.referrer
   end
 
-  def remove
-  end
+  def remove; end
 
   private
 

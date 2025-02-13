@@ -21,6 +21,7 @@
    <%= link_to "Edit", edit_restaurant_fooditem_path(fooditem.restaurant_id, fooditem) , class:"btn btn-outline-primary mr-1" %>
    <%= link_to "delete item items",restaurant_fooditems_url(fooditem.restaurant_id,fooditem) , data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: "btn btn-outline-primary mr-1" %>
    <%else%>
+   <% byebug %>
    <%= button_to "add", cart_cartitems_path(current_user.cart, fooditem_id: fooditem.id), method: :post,  class:"btn btn-outline-primary mr-1" %>
   </td>
  </tr>

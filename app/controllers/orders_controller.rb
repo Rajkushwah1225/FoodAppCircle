@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
-  
   load_and_authorize_resource
-  
+
   def index
     @orders = current_user.orders
   end
@@ -17,10 +16,10 @@ class OrdersController < ApplicationController
     if @order.save
       @order.update(status: 0)
       UserMailer.order_mail(current_user.email).deliver_now
-      flash[:success] = "Thank you for your order"
+      flash[:success] = 'Thank you for your order'
       redirect_to @order
     else
-      flash.now[:error] = "some errors occur"
+      flash.now[:error] = 'some errors occur'
       render :new
     end
   end
@@ -33,30 +32,30 @@ class OrdersController < ApplicationController
   def confirmed
     @order = Order.find(params[:order_id])
     @order.update(status: :Confirmed)
-    flash[:success] = "your order has been Confirmed"
+    flash[:success] = 'your order has been Confirmed'
     redirect_to request.referrer
   end
 
   def rejected
     @order = Order.find(params[:order_id])
     @order.update(status: :Rejected)
-    flash[:success] = "your order has been Rejected"
+    flash[:success] = 'your order has been Rejected'
     redirect_to request.referrer
   end
 
   def cancelled
     @order = Order.find(params[:order_id])
     @order.update(status: :Cancelled)
-    flash[:success] = "your order has been cancelled"
+    flash[:success] = 'your order has been cancelled'
     redirect_to request.referrer
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:status , :address, :restaurant_id, fooditem_ids: [])
+    params.require(:order).permit(:status, :address, :restaurant_id, fooditem_ids: [])
   end
 end
 
-#UserMailer.example(User.new(email: 'bo@samurails.com')).deliver
-#@users = User.all
+# UserMailer.example(User.new(email: 'bo@samurails.com')).deliver
+# @users = User.all

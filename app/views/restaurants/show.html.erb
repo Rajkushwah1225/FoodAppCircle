@@ -1,4 +1,18 @@
-<h1><%= @restaurant.name %></h1>
-<h1><%= @restaurant.description %></h1>
-<h1><%= @restaurant.address %></h1>
-<h1><%= @restaurant.cuisine_type %></h1>
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Restaurant Name</th>
+            <th>Description</th>
+            <th>Address</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%=  @restaurant.name %></td>
+                <td><%= @restaurant.description %></td>
+                <td><%= @restaurant.address %></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
