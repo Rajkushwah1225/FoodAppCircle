@@ -3,7 +3,7 @@ class CartsController < ApplicationController
   before_action :set_food_item, only: :create
   before_action :set_cart_item, except: :destroy
 
-  def create 
+  def create
     CartItem.create(cart: current_user.cart, food_item: food_item)
   end
 
